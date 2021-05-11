@@ -17,8 +17,7 @@ public class Main {
 	        String Descripcion2;
 	        int precio2;
 	        int cantidad2;
-	
-	        
+	       
 	        
 	        System.out.println("Ingrese el la razon social de su empresa");
 	        RS = scan.nextLine();
@@ -39,20 +38,23 @@ public class Main {
 	        System.out.println("¿Cuantos lleva?");
 	        cantidad2 =scan.nextInt();
 	        
+	  
+	        
+	        
 	        
 	        //Calculos producto 1
 	        
-	        int precioTotalP1 = precio*cantidad;
-	        double precioConIVAP1 = precioTotalP1 * IVA + precioTotalP1;
+	        int precioTotalP1 = precioTotal1(precio, cantidad);
+	        double precioConIVAP1 = precioConIva1(IVA, precioTotalP1);
 	        
 	        //Calculos producto 2
-	        int precioTotalP2 = precio2*cantidad2;
-	        double precioConIva2 = precioTotalP2* IVA + precioTotalP2;
+	        int precioTotalP2 = precioTotal1(precio2, cantidad2);
+	        double precioConIva2 = precioConIva1(IVA, precioTotalP2);
 	        
 	        
 	        //Calculos en conjunto
-	        int subtotalSinIva = precioTotalP1 + precioTotalP2;
-	        double total = precioConIVAP1 + precioConIva2;
+	        int subtotalSinIva = subtotalSinIva(precioTotalP1, precioTotalP2);
+	        double total = total(precioConIVAP1, precioConIva2);
 	        
 	        
 	        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
@@ -79,6 +81,22 @@ public class Main {
 	        
 		
 	
+	}
+
+	private static double total(double precioConIVAP1, double precioConIva2) {
+		return precioConIVAP1 + precioConIva2;
+	}
+
+	private static int subtotalSinIva(int precioTotalP1, int precioTotalP2) {
+		return precioTotalP1 + precioTotalP2;
+	}
+
+	private static double precioConIva1(final double IVA, int precioTotalP1) {
+		return precioTotalP1 * IVA + precioTotalP1;
+	}
+
+	private static int precioTotal1(int precio, int cantidad) {
+		return precio*cantidad;
 	}
 
 }
